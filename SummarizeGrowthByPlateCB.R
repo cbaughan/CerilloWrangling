@@ -1,3 +1,5 @@
+# Modified function from growthcurver package
+message("Loading functions from SummarizeGrowthByPlate.R")
 SummarizeGrowthByPlateCB <- function (plate, t_trim = 0, bg_correct = "min", plot_fit = FALSE, 
                                     plot_file = "growthcurver.pdf") 
 {
