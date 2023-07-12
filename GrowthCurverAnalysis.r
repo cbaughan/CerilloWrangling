@@ -5,7 +5,7 @@
 # Install required packages
 install.packages("caret")
 install.packages("tidyverse")
-install.pcakages("readr")
+install.packages("readr")
 install.packages("FSA")
 install.packages("growthcurver")
 
@@ -27,7 +27,6 @@ source("SummarizeGrowthByPlateCB.R")
 source("cerillo-wrangling.R")
   
 #Interactively choose a file to import and skip the first 9 lines of the file
-d<-read.csv(file.choose())
 d<- read_csv(file.choose(), 
                                         col_names = TRUE, skip = 9)
 
@@ -38,7 +37,7 @@ d<-cerillo_wrangling(d)
 
 # Select the blank columns to run a quick check 
 blanks<- d[seq(1, nrow(d), 3), ] #Take every nth timepoint to save time while plotting
-blanks<-blanks[,-c(2:65)]
+blanks<-blanks[,-c(2:65)] #Removes columns corresponding to wells A1-H8
 blanks<-melt(blanks, id.vars = "time", variable.name = "well", value.name = "od")
 # View the blanks file and select up to 3 wells that will be used for background correction
 ggplot(blanks, aes(x=time, y=od)) + geom_point(aes(), alpha=0.5)  + facet_wrap(~well, ncol = 4, dir = c("v")) + theme_bw()
