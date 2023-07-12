@@ -3,8 +3,12 @@
 message("Loading functions from cerillo-wrangling.R")
 # Function for wrangling Cerillo data to input into Growthcurver
 cerillo_wrangling<-function(d){
+  
+  #Uses the first row as row names and deletes the duplicate row
+  colnames(d) <- as.character(d[1,])
+  d<- d[-1,]
   # Remove Temperature Column
-  d<-d[,-(1:3)] 
+  d<-d[,-(1:2)] 
   d<-d[,-2]
   # Convert class to numeric
   d<-as.data.frame(sapply(d, as.numeric))
