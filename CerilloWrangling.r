@@ -5,7 +5,7 @@
 # Install required packages
 install.packages("caret")
 install.packages("tidyverse")
-install.pcakages("readr")
+install.packages("readr")
 install.packages("FSA")
 install.packages("growthcurver")
 
